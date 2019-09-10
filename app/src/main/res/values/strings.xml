@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">KcalApp</string>
     <string name="about_page1">About this app</string>
-    <string name="about_page2">This app was created for people looking over their eating habits. This can be the beginning of a new life!</string>
-    <string name="action_aboutpage">About</string>
+    <string name="about_page2">This app was created for people looking over their eating habits. Click a food to check its kcal!</string>
+    <string name="action_aboutpage">Om Appen</string>
 </resources>

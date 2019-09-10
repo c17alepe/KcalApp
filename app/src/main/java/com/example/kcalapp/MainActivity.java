@@ -24,7 +24,6 @@ import android.content.Intent;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,12 +58,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Food> foodData=new ArrayList<>();
 
     private class FetchData extends AsyncTask<Void,Void,String>{
-
-        //@Override
-        //protected void onPostExecute(String s){
-        //    super.onPostExecute(s);
-        //    Log.d("alpe","DataFetched"+s);
-        //}
 
         @Override
         protected String doInBackground(Void... params) {
@@ -134,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d("alpe",o);
 
-            //extracts name, location and height
             try {
                 JSONArray jsonFoods = new JSONArray(JSONdata);
                 for (int i = 0; i < jsonFoods.length(); i++) {
@@ -151,18 +143,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("alpe", "exception:" + e.getMessage());
             }
 
-            //creates the arraylist for names
-            ArrayList<String> listMountain = new ArrayList();
+
+            ArrayList<String> listFood = new ArrayList();
             for (int i=0; i<foodData.size();i++){
-                listMountain.add(foodData.get(i).getName());
+                listFood.add(foodData.get(i).getName());
             }
 
-            //adapter for the listview
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.list_item_textview, R.id.list_item_textview, listMountain);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.list_item_textview, R.id.list_item_textview, listFood);
             ListView listview= findViewById(R.id.main_listview);
             listview.setAdapter(adapter);
 
-            //listens for clicks and returns the appropriate information
+
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Toast.makeText(getApplicationContext(), foodData.get(position).info(), Toast.LENGTH_SHORT).show();
